@@ -67,9 +67,13 @@ public class UAC
                     amount = drr["Value"].ToString();
             }
 
-            if (!Utilities.isNumericSpace(customerCode) || !Utilities.isNumericSpace(amount))
+            if (!Utilities.isNumericSpace(customerCode))
             {
-                return "Input not valid";
+                return "Partner No not valid";
+            }
+            else if (!Utilities.isNumericSpace(amount))
+            {
+                return "Amount not valid";
             }
 
             if (!string.IsNullOrEmpty(customerCode))
