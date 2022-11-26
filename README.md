@@ -1,7 +1,7 @@
 # My Third Party Integration Implementations
 
 ## Description
-This repo shows all the implementations I have designed and built to integrate third party merchants with any organization. I have integrated both SOAP and REST APIs using technologies such as restsharp, C#, WSDL and XML and JSON.
+This repo shows all the implementations I have designed and built to integrate third party merchants with any organization. I have integrated both SOAP and REST APIs using technologies such as restsharp, C#, WSDL, XML and JSON.
 
 ## Bugs
 
