@@ -12,4 +12,4 @@ At this time, there are no known bugs.
 
 ## License
 
-**this repo** is not open source and consent should be seeked before download and use.
+**This repo** is not open source and consent should be seeked before download and use.
