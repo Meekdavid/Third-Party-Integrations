@@ -1,4 +1,4 @@
-Efficiently everyth
+Efficiently everyt
 // A C# program for Client
 
 using System;
