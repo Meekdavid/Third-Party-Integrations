@@ -389,8 +389,8 @@ public class UAC
                     if (OraDrSelect.HasRows == true)
                     {
                         OraDrSelect.Read();
-                        NUBAN = OraDrSelect["MAP_ACC_NO"].ToString();
-                        return NUBAN;
+                        NUMBERN = OraDrSelect["bleach_nums"].ToString();
+                        return NUMBERN;
 
                     }
                     else
@@ -402,7 +402,7 @@ public class UAC
         }
         catch (Exception ex)
         {
-            ErrHandler.Log(ex.Message, "ConverttoNuban", "Could not convert account Number");
+            ErrHandler.Log(ex.Message, "ConverttoAuto", "Could not convert your visual number");
             return "-1";
         }
         finally
