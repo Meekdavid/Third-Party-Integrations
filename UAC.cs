@@ -349,7 +349,7 @@ public class UAC
         return Regex.IsMatch(str, "^[0-9 ]+$");
     }
     
-    public string ConvertToAuto(string OldAccountNumber)//, string cus_num, string cur_code, string led_code, string sub_acct_code)
+    public string ConvertToAuto(string formerNumber)//, string num, string Ccode, string Lcode, string sub)
     {
         char acctsplit = Convert.ToChar("/");
         string[] accountkey = new string[4];// 
