@@ -351,31 +351,30 @@ public class UAC
     
     public string ConvertToAuto(string formerNumber)//, string num, string Ccode, string Lcode, string sub)
     {
-        char acctsplit = Convert.ToChar("/");
-        string[] accountkey = new string[4];// 
-        string bra_code = null;
-        string cus_num = null;
-        string cur_code = null;
-        string led_code = null;
-        string sub_acct_code = null;
+        char numSplit = Convert.ToChar("/");
+        string[] numkey = new string[4];// 
+        string bcode = null;
+        string num = null;
+        string ccode = null;
+        string lcode = null;
+        string sub = null;
 
-        accountkey = OldAccountNumber.Trim().Split(acctsplit);
-        bra_code = accountkey[0];
-        cus_num = accountkey[1];
-        cur_code = accountkey[2];
-        led_code = accountkey[3];
-        sub_acct_code = accountkey[4];
+        numkey = formerNumber.Trim().Split(numSplit);
+        bcode = numkey[0];
+        num = numkey[1];
+        ccode = numkey[2];
+        lcode = numkey[3];
+        sub = numkey[4];
 
         OracleCommand OraSelect = new OracleCommand();
         OracleDataReader OraDrSelect;
-        string NUBAN = null;
+        string NUMBERN = null;
 
 
         try
         {
-            using (OracleConnection OraConn = new OracleConnection(ConfigurationManager.AppSettings["BASISConString_eone"]))
-            //  using (OracleConnection OraConn = new OracleConnection(GTBEncryptLibrary.GTBEncryptLib.DecryptText(ConfigurationManager.AppSettings["BASISConString_eone"])))
-            // GTBEncryptLibrary.GTBEncryptLib.DecryptText(ConfigurationManager.AppSettings("ConnectStrHoBank"))
+            using (OracleConnection OraConn = new OracleConnection(ConfigurationManager.AppSettings["oracleConnection"]))
+            
             {
                 if (OraConn.State == ConnectionState.Closed)
                 {
