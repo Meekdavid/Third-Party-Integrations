@@ -344,5 +344,8 @@ public class UAC
             return "Get customer info failed.";
         }
     }
-    
+    public static bool isNumericSpace(string str)
+    {
+        return Regex.IsMatch(str, "^[0-9 ]+$");
+    }
 }
