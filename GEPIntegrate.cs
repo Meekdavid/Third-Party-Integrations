@@ -12,7 +12,7 @@ using RestSharp;
 using System.Net.Http;
 using System.Text;
 
-public class BUA
+public class GEP
 {
     private string cementValURL;
     private string cementPayURL;
@@ -21,14 +21,14 @@ public class BUA
     private string token;
     private string category;
     private string url;
-    private string accountNumber;
+    private string mbokoNumber;
     protected static System.Net.Http.HttpClient _httpClient = new System.Net.Http.HttpClient();
 
-    public BUA()
+    public GEP()
     {
     }
 
-    public string GetFieldDetailsBUA(DataSet dt_set, string branch, int formid)
+    public string GetFieldDetailsGEP(DataSet dt_set, string branch, int formid)
     {
         string refId = string.Empty;
         string customerName = string.Empty;
@@ -38,16 +38,15 @@ public class BUA
         string StatusMess = string.Empty;
         string classMethod = "BUA";
         string hash = string.Empty;
-        Utilities util = new Utilities();
         string amount = string.Empty;
 
 
         try
         {
             DataTable dt = dt_set.Tables[0];
-            cementValURL = ConfigurationManager.AppSettings["BUACement_Validate_URL"].ToString();
-            foodValURL = ConfigurationManager.AppSettings["BUAFood_Validate_URL"].ToString();
-            token = ConfigurationManager.AppSettings["BUAToken"].ToString();
+            cementValURL = ConfigurationManager.AppSettings["GEPCement_Validate_URL"].ToString();
+            foodValURL = ConfigurationManager.AppSettings["GEPFood_Validate_URL"].ToString();
+            token = ConfigurationManager.AppSettings["GEPToken"].ToString();
 
             foreach (DataRow drr in dt.Rows)
             {
@@ -67,7 +66,7 @@ public class BUA
                 }
             }
 
-            if (!Utilities.isNumeric(amount))
+            if (!isNumeric(amount))
             {
                 return "Invalid Amount";
 
@@ -89,9 +88,9 @@ public class BUA
                 jsonObj.orderid = refId;
 
                 string jsonString = JsonConvert.SerializeObject(jsonObj);
-                ErrHandler.Log(classMethod, refId, "Validation Request sent to BUA for " + refId + " is: " + jsonString);
+                ErrHandler.Log(classMethod, refId, "Validation Request sent to GEP for " + refId + " is: " + jsonString);
                 string Response = HttpPostRestClientToken(token, jsonString, url, false, null);
-                ErrHandler.Log(classMethod, refId, "Validation Response from BUA for " + refId + " is: " + Response);
+                ErrHandler.Log(classMethod, refId, "Validation Response from GEP for " + refId + " is: " + Response);
 
                 
                 if (!string.IsNullOrEmpty(Response))
@@ -124,8 +123,8 @@ public class BUA
                 }
                 else
                 {
-                    ErrHandler.Log(classMethod, refId, "Empty Response from BUA");
-                    ret_str = "Empty Response from BUA";
+                    ErrHandler.Log(classMethod, refId, "Empty Response from GEP");
+                    ret_str = "Empty Response from GEP";
                 }
             }
             else
@@ -145,9 +144,9 @@ public class BUA
 
     }
 
-    public string UpdateFieldDetailsBUA(string coll_acctno, DataSet dt_data, string org_branch, string transref, DateTime transdate, int payment_mode, int formid, long transid)
+    public string UpdateFieldDetailsGEP(string coll_acctno, DataSet dt_data, string org_branch, string transref, DateTime transdate, int payment_mode, int formid, long transid)
     {
-        string ClassMeth = "BUA|PaymentUpdate";
+        string ClassMeth = "GEP|PaymentUpdate";
         Utilities util = new Utilities();
         string refId = string.Empty;
         string insuredName = string.Empty;
@@ -164,8 +163,8 @@ public class BUA
 
         try
         {
-            cementPayURL = ConfigurationManager.AppSettings["BUACement_Payment_URL"].ToString();
-            foodPayURL = ConfigurationManager.AppSettings["BUAFood_Payment_URL"].ToString();
+            cementPayURL = ConfigurationManager.AppSettings["GEPCement_Payment_URL"].ToString();
+            foodPayURL = ConfigurationManager.AppSettings["GEPFood_Payment_URL"].ToString();
             token = ConfigurationManager.AppSettings["BUAToken"].ToString();
 
 
@@ -200,9 +199,9 @@ public class BUA
             JsonObj.bank_transaction_id = transref;
 
             string jsonString = JsonConvert.SerializeObject(JsonObj);
-            ErrHandler.Log(ClassMeth, refId, "Payment Update Request sent to BUA is: " + jsonString);
+            ErrHandler.Log(ClassMeth, refId, "Payment Update Request sent to GEP is: " + jsonString);
             string Response = HttpPostRestClientToken(token, jsonString, url, false, null);
-            ErrHandler.Log(ClassMeth, refId, "Payment Update Response from BUA is: " + Response);
+            ErrHandler.Log(ClassMeth, refId, "Payment Update Response from GEP is: " + Response);
 
             if (!string.IsNullOrEmpty(Response))
             {
@@ -215,8 +214,8 @@ public class BUA
                 if (RespCode == "200")
                 {
                     
-                        CustomerImp ci = new CustomerImp();
-                        ci.updateThirdPartyReference(transid, PayRef);
+                        
+                        updateThirdPartyReference(transid, PayRef);
 
                         ci = null;
                         return_str = "SUCCESS";
@@ -229,8 +228,8 @@ public class BUA
             }
             else
             {
-                ErrHandler.Log(ClassMeth, refId, "Empty Response from BUA");
-                return_str = "Empty Response from BUA";
+                ErrHandler.Log(ClassMeth, refId, "Empty Response from GEP");
+                return_str = "Empty Response from GEP";
             }
         }
 
@@ -254,12 +253,7 @@ public class BUA
             var client = new RestClient(url);
 
 
-            ServicePointManager.Expect100Continue = true;       /*code used for Could not create SSL / TLS secure channel*/
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls
-                   | SecurityProtocolType.Tls11
-                   | SecurityProtocolType.Tls12
-                   | SecurityProtocolType.Ssl3;
-
+            
             var request = new RestRequest(Method.POST);
 
             if (usenameVParm == false)
