@@ -169,14 +169,14 @@ public class UAC
     public string UpdateFieldDetailsUAC(string coll_acctno, DataSet dt_data, string org_branch, string transref, DateTime transdate, int payment_mode, int formid, long transid)
     {
         string ClassMeth = "UAC|PaymentUpdate";
-        Utilities util = new Utilities();
+
         string customerCode = string.Empty;
         string PayRef = transref;
         DateTime date = transdate;
         string Ndate = date.ToString("dd/MM/yyyy");
         string currency = "NGN";
         string BankName = "GTB";
-        string bankAccount = util.ConvertToNuban(coll_acctno);
+        string bankAccount = ConvertToAuto(coll_acctno);
         string companyCode = "";
         string documentType = "Payment Update";
         string amount = string.Empty;
@@ -347,5 +347,69 @@ public class UAC
     public static bool isNumericSpace(string str)
     {
         return Regex.IsMatch(str, "^[0-9 ]+$");
+    }
+    
+    public string ConvertToAuto(string OldAccountNumber)//, string cus_num, string cur_code, string led_code, string sub_acct_code)
+    {
+        char acctsplit = Convert.ToChar("/");
+        string[] accountkey = new string[4];// 
+        string bra_code = null;
+        string cus_num = null;
+        string cur_code = null;
+        string led_code = null;
+        string sub_acct_code = null;
+
+        accountkey = OldAccountNumber.Trim().Split(acctsplit);
+        bra_code = accountkey[0];
+        cus_num = accountkey[1];
+        cur_code = accountkey[2];
+        led_code = accountkey[3];
+        sub_acct_code = accountkey[4];
+
+        OracleCommand OraSelect = new OracleCommand();
+        OracleDataReader OraDrSelect;
+        string NUBAN = null;
+
+
+        try
+        {
+            using (OracleConnection OraConn = new OracleConnection(ConfigurationManager.AppSettings["BASISConString_eone"]))
+            //  using (OracleConnection OraConn = new OracleConnection(GTBEncryptLibrary.GTBEncryptLib.DecryptText(ConfigurationManager.AppSettings["BASISConString_eone"])))
+            // GTBEncryptLibrary.GTBEncryptLib.DecryptText(ConfigurationManager.AppSettings("ConnectStrHoBank"))
+            {
+                if (OraConn.State == ConnectionState.Closed)
+                {
+                    OraConn.Open();
+                }
+                OraSelect.Connection = OraConn;
+                string selectquery = "select  MAP_ACC_NO from map_acct where bra_code = " + bra_code + " and cus_num = " + cus_num + "and cur_code = " + cur_code + "and led_code = " + led_code + " and sub_acct_code = " + sub_acct_code;// from map_acct where MAP_ACC_NO = '" + NUBAN + "'";
+                OraSelect.CommandText = selectquery;
+                OraSelect.CommandType = CommandType.Text;
+                using (OraDrSelect = OraSelect.ExecuteReader(CommandBehavior.CloseConnection))
+                {
+                    if (OraDrSelect.HasRows == true)
+                    {
+                        OraDrSelect.Read();
+                        NUBAN = OraDrSelect["MAP_ACC_NO"].ToString();
+                        return NUBAN;
+
+                    }
+                    else
+                    {
+                        return "-2";
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            ErrHandler.Log(ex.Message, "ConverttoNuban", "Could not convert account Number");
+            return "-1";
+        }
+        finally
+        {
+
+        }
+
     }
 }
