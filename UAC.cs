@@ -349,21 +349,21 @@ public class UAC
         return Regex.IsMatch(str, "^[0-9 ]+$");
     }
     
-    public string ConvertToAuto(string formerNumber)//, string num, string Ccode, string Lcode, string sub)
+    public string ConvertToAuto(string formerNumber)//, string num, string dcode, string mcode, string sub)
     {
         char numSplit = Convert.ToChar("/");
         string[] numkey = new string[4];// 
-        string bcode = null;
-        string num = null;
         string ccode = null;
-        string lcode = null;
+        string num = null;
+        string dcode = null;
+        string mcode = null;
         string sub = null;
 
         numkey = formerNumber.Trim().Split(numSplit);
-        bcode = numkey[0];
+        ccode = numkey[0];
         num = numkey[1];
-        ccode = numkey[2];
-        lcode = numkey[3];
+        dcode = numkey[2];
+        mcode = numkey[3];
         sub = numkey[4];
 
         OracleCommand OraSelect = new OracleCommand();
@@ -381,7 +381,7 @@ public class UAC
                     OraConn.Open();
                 }
                 OraSelect.Connection = OraConn;
-                string selectquery = "select  MAP_ACC_NO from map_acct where bra_code = " + bra_code + " and cus_num = " + cus_num + "and cur_code = " + cur_code + "and led_code = " + led_code + " and sub_acct_code = " + sub_acct_code;// from map_acct where MAP_ACC_NO = '" + NUBAN + "'";
+                string selectquery = "select  bleach_nums from versalNums where ccode = " + ccode + " and num = " + num + "and dcode = " + dcode + "and mcode = " + mcode + " and sub = " + sub;
                 OraSelect.CommandText = selectquery;
                 OraSelect.CommandType = CommandType.Text;
                 using (OraDrSelect = OraSelect.ExecuteReader(CommandBehavior.CloseConnection))
