@@ -1,4 +1,4 @@
-Effi
+Eff
 ﻿using System.ComponentModel.DataAnnotations;
 
 namespace catalogueService.Models
