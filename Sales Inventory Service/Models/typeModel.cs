@@ -1,4 +1,4 @@
-Efficient
+Efficien
 ﻿using System.ComponentModel.DataAnnotations;
 
 namespace catalogueService.Models
