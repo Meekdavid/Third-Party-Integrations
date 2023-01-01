@@ -1,4 +1,4 @@
-E
+
 ﻿using System.ComponentModel.DataAnnotations;
 
 namespace catalogueService.Models
