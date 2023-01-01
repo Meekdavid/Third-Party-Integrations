@@ -1,4 +1,4 @@
-Efficiently fin
+Efficiently fi
 ﻿using System.ComponentModel.DataAnnotations;
 
 namespace catalogueService.Models
