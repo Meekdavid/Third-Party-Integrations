@@ -1,4 +1,4 @@
-Efficie
+Effici
 // A C# Program for Server
 
 using System;
