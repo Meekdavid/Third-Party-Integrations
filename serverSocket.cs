@@ -1,4 +1,4 @@
-Efficiently everything
+Efficiently everythin
 // A C# Program for Server
 
 using System;
