@@ -1,4 +1,4 @@
-Effiong effici
+Effiong effic
 // A C# program for Client
 
 using System;
