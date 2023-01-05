@@ -1,5 +1,4 @@
-
-﻿using catalogueService.Database;
+using catalogueService.Database;
 using catalogueService.Database.DBsets;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
