@@ -1,4 +1,4 @@
-Efficient eff
+Efficient e
 // A C# program for Client
 
 using System;
