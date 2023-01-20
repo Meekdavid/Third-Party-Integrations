@@ -1,4 +1,4 @@
-Effici
+Effic
 # My Third Party Integration Implementations
 
 ## Description
