@@ -1,4 +1,4 @@
-Efficient ef
+Efficient e
 # My Third Party Integration Implementations
 
 ## Description
