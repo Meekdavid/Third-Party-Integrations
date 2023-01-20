@@ -1,4 +1,4 @@
-Efficient efficien
+Efficient efficie
 # My Third Party Integration Implementations
 
 ## Description
