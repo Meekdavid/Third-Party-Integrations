@@ -1,4 +1,4 @@
-Effi
+Eff
 # My Third Party Integration Implementations
 
 ## Description
