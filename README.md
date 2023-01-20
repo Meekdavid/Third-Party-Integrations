@@ -1,4 +1,4 @@
-E
+
 # My Third Party Integration Implementations
 
 ## Description
