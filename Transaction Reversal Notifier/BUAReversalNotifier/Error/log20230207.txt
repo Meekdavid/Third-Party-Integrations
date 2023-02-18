@@ -1,0 +1,31 @@
+2023-02-07 08:21:57.710 +01:00 [INF] Worker running at: 07/02/2023 8:21:57 am
+2023-02-07 08:22:00.905 +01:00 [INF] 
+
+
+--------------Beginning the execution of GetTransactions----------------
+2023-02-07 08:22:01.554 +01:00 [INF] About retrieving BUA transactions from transactions table with the stored procedure 'SelectBUATransactions'
+2023-02-07 08:22:01.890 +01:00 [INF] 
+
+
+--------------Switched from GetTransactions to sqlSelectQuery ----------------
+2023-02-07 08:22:01.915 +01:00 [INF] About to open SQL connection to execute SelectBUATransactions
+2023-02-07 08:22:02.350 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-02-07 08:22:02.359 +01:00 [INF] SQL query executed with rows affected as -1
+2023-02-07 08:22:02.410 +01:00 [INF] Hosting environment: Development
+2023-02-07 08:22:02.567 +01:00 [INF] Content root path: C:\Users\david.mboko\Desktop\BUA_Reversal_Notifier\BUAReversalNotifier
+2023-02-07 08:23:02.128 +01:00 [INF] An Exception occured:Self referencing loop detected for property 'Table' with type 'System.Data.DataTable'. Path 'Columns[0]'.,    at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.CheckForCircularReference(JsonWriter writer, Object value, JsonProperty property, JsonContract contract, JsonContainerContract containerContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.CalculatePropertyValues(JsonWriter writer, Object value, JsonContainerContract contract, JsonProperty member, JsonProperty property, JsonContract& memberContract, Object& memberValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeValue(JsonWriter writer, Object value, JsonContract valueContract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeList(JsonWriter writer, IEnumerable values, JsonArrayContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeValue(JsonWriter writer, Object value, JsonContract valueContract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeValue(JsonWriter writer, Object value, JsonContract valueContract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.Serialize(JsonWriter jsonWriter, Object value, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.SerializeInternal(JsonWriter jsonWriter, Object value, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Serialize(JsonWriter jsonWriter, Object value, Type objectType)
+   at Newtonsoft.Json.JsonConvert.SerializeObjectInternal(Object value, Type type, JsonSerializer jsonSerializer)
+   at Newtonsoft.Json.JsonConvert.SerializeObject(Object value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.SerializeObject(Object value)
+   at BUAReversalNotifier.Repositories.sqlProcess.sqlSelectQuery(String destination, String ConnString, String CommandQuery, CommandType cmdType) in C:\Users\david.mboko\Desktop\BUA_Reversal_Notifier\BUAReversalNotifier\Repositories\sqlProcess.cs:line 221, 
+2023-02-07 08:23:07.642 +01:00 [INF] Error occured While Retrieving RecordS from BUA Transaction Table
