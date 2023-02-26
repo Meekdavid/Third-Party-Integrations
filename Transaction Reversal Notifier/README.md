@@ -1,5 +1,5 @@
 # Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+This project is a worker service that is used to notify a third-party merchant of all reversed transactions carried out in their wallet.
 
 # Getting Started
 TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
@@ -7,7 +7,13 @@ TODO: Guide users through getting your code up and running on their own system. 
 2.	Software dependencies
 3.	Latest releases
 4.	API references
-
+To run this code, follow the following instructions using Windows cmd;
+1.      Compile this code by running 'dotnet publish -c Release -o <output_directory> -r <runtime_identifier>'
+2.      Build the project by running 'dotnet build <project_name>.csproj'
+3.      Navigate to the directory using 'cd <path_to_output_directory>'
+4.      Run the worker service using 'dotnet <project_name>.dll'
+5.      Run the worker service as a background service using 'start /b dotnet <project_name>.dll'
+6.      Run the project as window service using 'sc start <service_name>'
 # Build and Test
 TODO: Describe and show how to build your code and run the tests. 
 
