@@ -1,4 +1,4 @@
-Efficiency and
+Efficiency an
 // A C# program for Client
 
 using System;
