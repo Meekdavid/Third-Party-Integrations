@@ -1,4 +1,4 @@
-Efficient everything 
+Efficient everything
 <Project Sdk="Microsoft.NET.Sdk.Worker">
 
   <PropertyGroup>
