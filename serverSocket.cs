@@ -4,20 +4,16 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
  
-
 namespace Server {
  
-
 class Program {
  
 // Main Method
 
 static void Main(string[] args)
 {
-
-    ExecuteServer();
-}
- 
+   ExecuteServer();
+} 
 
 public static void ExecuteServer()
 {
@@ -46,9 +42,7 @@ public static void ExecuteServer()
                  SocketType.Stream, ProtocolType.Tcp);
  
 
-    try {
-
-         
+    try {        
 
         // Using Bind() method we associate a
 
@@ -72,12 +66,9 @@ public static void ExecuteServer()
         listener.Listen(10);
  
 
-        while (true) {
+        while (true) {             
 
-             
-
-            Console.WriteLine("Waiting connection ... ");
- 
+            Console.WriteLine("Waiting connection ... "); 
 
             // Suspend while waiting for
 
@@ -87,28 +78,20 @@ public static void ExecuteServer()
 
             // will accept connection of client
 
-            Socket clientSocket = listener.Accept();
- 
+            Socket clientSocket = listener.Accept(); 
 
             // Data buffer
 
             byte[] bytes = new Byte[1024];
 
-            string data = null;
- 
+            string data = null; 
 
             while (true) {
  
 
-                int numByte = clientSocket.Receive(bytes);
+                int numByte = clientSocket.Receive(bytes);                 
 
-                 
-
-                data += Encoding.ASCII.GetString(bytes,
-
-                                           0, numByte);
-
-                                            
+                data += Encoding.ASCII.GetString(bytes, 0, numByte);                                           
 
                 if (data.IndexOf("<EOF>") > -1)
 
@@ -126,8 +109,7 @@ public static void ExecuteServer()
 
             // using Send() method
 
-            clientSocket.Send(message);
- 
+            clientSocket.Send(message); 
 
             // Close client Socket using the
 
@@ -140,18 +122,14 @@ public static void ExecuteServer()
             clientSocket.Shutdown(SocketShutdown.Both);
 
             clientSocket.Close();
-
         }
-
-    }
-
-     
+    }     
 
     catch (Exception e) {
 
         Console.WriteLine(e.ToString());
 
     }
-}
-}
+      }
+   }
 }
