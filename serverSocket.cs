@@ -1,5 +1,5 @@
 // A C# Program for Server
-efficient efficien
+efficient efficie
 using System;
 
 using System.Net;
