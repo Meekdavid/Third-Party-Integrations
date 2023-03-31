@@ -9,7 +9,7 @@ namespace Server {
 class Program {
  
 // Main Method
-effic
+effi
 static void Main(string[] args)
 {
    ExecuteServer();
