@@ -3,7 +3,7 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
- efficiency effi
+ efficiency eff
 namespace Server {
  
 class Program {
