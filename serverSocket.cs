@@ -9,7 +9,6 @@ namespace Server {
 class Program {
  
 // Main Method
-e
 static void Main(string[] args)
 {
    ExecuteServer();
