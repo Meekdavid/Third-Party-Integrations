@@ -1,5 +1,5 @@
 // A C# program for Client
-efficiently everythin
+efficiently everythi
 using System; 
 
 using System.Net;
