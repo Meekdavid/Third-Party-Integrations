@@ -1,5 +1,5 @@
 // A C# program for Client
-efficient Effi
+efficient Eff
 using System; 
 
 using System.Net;
