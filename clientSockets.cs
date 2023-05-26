@@ -1,6 +1,6 @@
 // A C# program for Client
 using System; 
-efficient effectiv
+efficient effecti
 using System.Net;
 
 using System.Net.Sockets;
