@@ -11,7 +11,7 @@ using System.Net;
 using RestSharp;
 using System.Net.Http;
 using System.Text;
-effievient effic e
+effievient effic 
 public class GEP
 {
     private string cementValURL;
