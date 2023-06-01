@@ -11,7 +11,6 @@ using System.Net;
 using RestSharp;
 using System.Net.Http;
 using System.Text;
-
 public class GEP
 {
     private string cementValURL;
